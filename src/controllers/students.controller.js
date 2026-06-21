@@ -16,11 +16,19 @@ export const getStudent = async (req, res) => {
 
 export const createStudent = async (req, res) => {
     const data = req.body;
-    students.push(data);
+
+    data.id = students.length + 1;
+
+    const dataSorted = {
+        id: data.id,
+        ...data
+    };
+
+    students.push(dataSorted);
 
     res.status(201).json({ 
         mensaje: "Estudiante creado", 
-        data: data 
+        data: dataSorted
     });
 }
 
