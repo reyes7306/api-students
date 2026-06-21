@@ -2,7 +2,7 @@ import { z } from 'zod';
 
 // El esquema exacto del JSON de estudiante
 export const studentSchema = z.object({
-    id: z.number({ required_error: 'El ID es obligatorio' }),
+    id: z.number({ required_error: 'El ID es obligatorio' }).optional(),
     nombres: z.string({ required_error: 'Los nombres son obligatorios' }).trim().min(1, { message: "El nombre no puede estar vacío o contener solo espacios" }),
     apellidos: z.string({ required_error: 'Los apellidos son obligatorios' }).trim().min(1, { message: "El apellido no puede estar vacío o contener solo espacios" }),
     edad: z.number({ required_error: 'La edad es obligatorio' }).max(18, 'La edad debe ser <= 18'),
